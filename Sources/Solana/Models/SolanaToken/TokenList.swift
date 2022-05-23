@@ -54,4 +54,37 @@ public struct Token: Hashable, Decodable {
     enum CodingKeys: String, CodingKey {
         case chainId, address, symbol, name, logoURI, extensions, _tags = "tags"
     }
+    
+    public enum WrappingToken: String {
+        case sollet, wormhole
+    }
+    
+    public var wrappedBy: WrappingToken? {
+        if tags.contains(where: {$0.name == "wrapped-sollet"}) {
+            return .sollet
+        }
+        
+        if tags.contains(where: {$0.name == "wrapped"}) &&
+            tags.contains(where: {$0.name == "wormhole"})
+        {
+            return .wormhole
+        }
+        
+        return nil
+    }
+    
+    public static var nativeSolana: Self {
+        .init(
+            _tags: [],
+            chainId: 101,
+            address: "So11111111111111111111111111111111111111112",
+            symbol: "SOL",
+            name: "Solana",
+//            decimals: 9,
+            logoURI: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+            tags: [],
+            extensions: nil,
+            isNative: true
+        )
+    }
 }
