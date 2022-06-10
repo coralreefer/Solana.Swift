@@ -27,6 +27,15 @@
           "revision": "d1552db4d907f2c5cb3d1bf1336496b2e16c8ecf",
           "version": "1.0.2"
         }
+      },
+      {
+        "package": "WalletCore",
+        "repositoryURL": "https://github.com/trustwallet/wallet-core",
+        "state": {
+          "branch": "master",
+          "revision": "1d4b214b3d7e81e6b29e477dcf722b42314bffe3",
+          "version": null
+        }
       }
     ]
   },
